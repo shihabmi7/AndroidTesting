@@ -41,22 +41,22 @@ public class ExampleInstrumentedTest {
     @Test
     public void greeterSaysHello() {
 
-        onView(withId(R.id.editText_firstName)).perform(typeText("Shihab"));
-        onView(withId(R.id.editText_lastName)).perform(typeText("Uddin"));
+        onView(withId(R.id.editText_firstName)).perform(typeText("Manik"));
+        onView(withId(R.id.editText_lastName)).perform(typeText("Monem"));
         onView(withId(R.id.button)).perform(click());
-        onView(withId(R.id.textView_message)).check(matches(withText("Welcome! Shihab Uddin")));
+        onView(withId(R.id.textView_message)).check(matches(withText("Welcome! Manik Monem")));
 
 
         //onView(withText("Hello Steve!")).check(matches(isDisplayed()));
     }
 
-//    @Test
-//    public void checkNewActivity() {
-//
-//        onView(withId(R.id.button_open_new_activity)).perform(click());
-//        onView(withText("SecondActivity")).check(matches(isDisplayed()));
-//
-//    }
+    @Test
+    public void checkNewActivity() {
+
+        onView(withId(R.id.button_open_new_activity)).perform(click());
+        onView(withText("NumberTwo")).check(matches(isDisplayed()));
+
+    }
 
 
 }

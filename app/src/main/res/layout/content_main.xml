@@ -69,4 +69,16 @@
         app:layout_constraintTop_toBottomOf="@+id/button"
         tools:text="Show Your Name" />
 
+    <Button
+        android:id="@+id/button_open_new_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_marginEnd="8dp"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_lastName" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

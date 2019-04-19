@@ -1,5 +1,6 @@
 package com.framebig.androidtesting;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     EditText firstName, secondName;
-    Button btnSubmit;
+    Button btnSubmit,button_open_new_activity;
     TextView message;
 
     @Override
@@ -25,6 +26,15 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         btnSubmit = findViewById(R.id.button);
+        button_open_new_activity = findViewById(R.id.button_open_new_activity);
+
+        button_open_new_activity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SecondActivity.class));
+            }
+        });
+
         firstName = findViewById(R.id.editText_firstName);
         secondName = findViewById(R.id.editText_lastName);
         message = findViewById(R.id.textView_message);

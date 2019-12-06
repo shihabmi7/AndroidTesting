@@ -2,15 +2,16 @@ package com.framebig.androidtesting;
 
 import android.content.Context;
 
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
 import androidx.test.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -25,10 +26,10 @@ import static org.junit.Assert.assertEquals;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class ExampleInstrumentedTest {
+public class HomeActiivtyTest {
 
     @Rule
-    public ActivityTestRule<MainActivity> rule = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<HomeActivity> rule = new ActivityTestRule<>(HomeActivity.class);
 
     @Test
     public void useAppContext() {
@@ -58,5 +59,22 @@ public class ExampleInstrumentedTest {
 
     }
 
+    @Test
+    public void checkHomeActivityIsLauched() {
 
+        onView(withId(R.id.main)).check(matches(isDisplayed()));
+
+    }
+
+    @Test
+    public void checkSecondActivityAndGetBack() {
+        onView(withId(R.id.button_open_new_activity)).perform(click());
+
+        onView(withId(R.id.secondary)).check(matches(isDisplayed()));
+
+        pressBack();
+
+        onView(withId(R.id.main)).check(matches(isDisplayed()));
+
+    }
 }

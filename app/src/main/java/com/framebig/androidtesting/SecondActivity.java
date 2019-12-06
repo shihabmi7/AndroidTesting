@@ -1,16 +1,16 @@
 package com.framebig.androidtesting;
 
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.View;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +26,8 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -43,9 +45,17 @@ public class SecondActivity extends AppCompatActivity {
 
         List<String> dataSet = new ArrayList<>(DATASET_COUNT);
         for (int i = 0; i < DATASET_COUNT; i++) {
-            dataSet.add(getString(R.string.item_element_text) +" "+ i);
+            dataSet.add(getString(R.string.item_element_text) + " " + i);
         }
-        myrecyclerView.setAdapter(new MyAdapter(dataSet,this));
+        myrecyclerView.setAdapter(new MyAdapter(dataSet, this));
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
